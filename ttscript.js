@@ -1,27 +1,10 @@
 addButton=document.getElementById("add")
 removeButton=document.getElementById("remove")
 
-sunday=document.getElementById("sundaytask");
-monday=document.getElementById("mondaytask");
-tuesday=document.getElementById("tuesdaytask");
-wednesday=document.getElementById("wednesdaytask");
-thursday=document.getElementById("thursdaytask");
-friday=document.getElementById("fridaytask");
-saturday=document.getElementById("saturdaytask");
-
-function retrieveTasks() {
-    let tasks = localStorage.getItem("tasks");
-    if (tasks) {
-        tasks = JSON.parse(tasks);
-        sundaytasks.innerHTML = tasks.sunday;
-        monday.innerHTML = tasks.monday;
-        tuesday.innerHTML = tasks.tuesday;
-        wednesday.innerHTML = tasks.wednesday;
-        thursday.innerHTML = tasks.thursday;
-        friday.innerHTML = tasks.friday;
-        saturday.innerHTML = tasks.saturday;
-    }
-}
+refresh();
+removeButton.addEventListener("click", ()=> {
+    console.log("Remove button clicked");
+})
 addButton.addEventListener("click", ()=> {
     console.log("Add button clicked");
     const addtask = document.getElementsByClassName("addtask")[0];
@@ -30,9 +13,11 @@ addButton.addEventListener("click", ()=> {
 const cancelButton=document.getElementById("cancel");
 cancelButton.addEventListener("click", ()=> {
     cancel();
+    refresh();
 })
 function cancel(){
     const addtask=document.getElementsByClassName("addtask")[0].style.display="none";
+    refresh();
 }
 submitButton=document.getElementById("submit_task");
 submitButton.addEventListener("click", ()=> {
@@ -61,19 +46,68 @@ submitButton.addEventListener("click", ()=> {
 })
 function refresh() {
     const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-    localStorage.removeItem(""); // Clean up invalid key
   
     for (let i = 0; i < 7; i++) {
         const raw = JSON.parse(localStorage.getItem(days[i]));
-        if (raw) {console.log(raw);
-        for (let j = 0; j < raw.length; j++) {
-            const task = raw[j];
-            const taskday = task.taskday;
-            const taskname = task.taskname;
-            const taskstart = task.taskstart;
-            const taskend = task.taskend;
+        if (raw){
+            for (let j = 0; j < raw.length; j++) {
+                const task = raw[j];
+                const taskday = task.taskday;
+                const taskname = task.taskname;
+                const taskstart = task.taskstart;
+                const taskend = task.taskend;
   
-            console.log(taskday, taskname, taskstart, taskend);}
+                const dayToAdd = document.getElementById(taskday +"task");
+                const taskdiv = document.createElement("div");
+                taskdiv.style.color="white";
+                taskdiv.style.backgroundColor="black";
+                taskdiv.style.boxShadow="0px 0px 0px cyan";
+                taskdiv.style.border="5px solid cyan";
+                taskdiv.style.position="absolute";
+                taskdiv.style.borderRadius="3vw";
+                taskdiv.style.left = `${timeToMinutes(taskstart)*2}px`;
+                taskdiv.style.top = "0px";
+                const wid = (timeToMinutes(taskend) - timeToMinutes(taskstart))*2;
+                taskdiv.style.width=`${wid}px`;
+                taskdiv.style.height="90%";
+                taskdiv.innerHTML=`<p class="intext" style="left 40%;up:30%;">${taskname}</p>`
+                taskdiv.innerHTML+=`<p class="intext" style="left 40%;down"30%">${taskstart} - ${taskend}</p>`
+               // taskdiv.innerHTML+=`<button class="remove" id="${taskname}">❌</button>`
+               dayToAdd.append(taskdiv);
+            }
+        }
     }
-  }
+        days.forEach((day) => {
+            const lastdiv = document.getElementById(day +"task");
+            const lastele = document.createElement("div");
+            lastele.style.width="1px";
+            lastele.style.backgroundColor="yellow";
+            lastele.style.height="100%";
+            lastele.style.position="absolute";
+            lastele.style.left=`${1440*2}px`;
+            lastdiv.append(lastele);
+            });
+            
 }
+function timeToMinutes(time) {
+    const [hours, minutes] = time.split(':').map(Number);
+    return (hours * 60) + minutes;
+}
+
+function horizontalscrolling(someContainerId){
+    const scrollContainer = document.getElementById(someContainerId);
+    scrollContainer.addEventListener("wheel", function(event) {
+    // Check if the wheel event is vertical (deltaY is the vertical scroll distance)
+        if (event.deltaY !== 0) {
+            scrollContainer.scrollLeft += event.deltaY; // Scroll horizontally based on vertical scroll
+            event.preventDefault(); // Prevent default scrolling behavior
+        }
+    });
+}
+horizontalscrolling("sundaytask");
+horizontalscrolling("mondaytask");
+horizontalscrolling("tuesdaytask");
+horizontalscrolling("wednesdaytask");
+horizontalscrolling("thursdaytask");
+horizontalscrolling("fridaytask");
+horizontalscrolling("saturdaytask");

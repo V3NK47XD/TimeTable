@@ -177,7 +177,7 @@ body{
 }
 #cancel:hover{  
     border-color: rgb(195, 0, 255);
-    color: black;
+    color: rgb(255, 255, 255);
     transition: 0.5s;
     box-shadow: 0px 0px 40px rgb(195, 0, 255);
 }
@@ -226,12 +226,13 @@ body{
     width: 90%;
     height: 100%;
     border-radius: 3vw;
-    border-color: black;
+    border-color:white;
     border-style: solid;
-    background-color: blue;
+    background-color: black;
     z-index: 1;
-    overflow-x:scroll;
-    scrollbar-width: none;    /* implement for all days */
+    overflow-x:auto; 
+ /* hide vertical scrollbar */
+    scrollbar-width:none;  /* implement for all days */
 }
 
 .monday{
@@ -266,10 +267,12 @@ body{
     width: 90%;
     height: 100%;
     border-radius: 3vw;
-    border-color: black;
+    border-color:white;
     border-style: solid;
-    background-color: blue;
+    background-color: black;
     z-index: 1;
+    overflow-x:scroll;
+    scrollbar-width: none; 
 }
 .tuesday{
     position: absolute;
@@ -303,10 +306,12 @@ body{
     width: 90%;
     height: 100%;
     border-radius: 3vw;
-    border-color: black;
+    border-color: white;
     border-style: solid;
-    background-color: blue;
+    background-color: black;
     z-index: 1;
+    overflow-x:scroll;
+    scrollbar-width: none; 
 }
 .wednesday{
     position: absolute;
@@ -340,10 +345,12 @@ body{
     width: 90%;
     height: 100%;
     border-radius: 3vw;
-    border-color: black;
+    border-color: white;
     border-style: solid;
-    background-color: blue;
+    background-color: black;
     z-index: 1;
+    overflow-x:scroll;
+    scrollbar-width: none; 
 }
 .thursday{
     position: absolute;
@@ -377,10 +384,12 @@ body{
     width: 90%;
     height: 100%;
     border-radius: 3vw;
-    border-color: black;
+    border-color: white;
     border-style: solid;
-    background-color: blue;
+    background-color: black;
     z-index: 1;
+    overflow-x:scroll;
+    scrollbar-width: none; 
 }
 .friday{
     position: absolute;
@@ -414,10 +423,12 @@ body{
     width: 90%;
     height: 100%;
     border-radius: 3vw;
-    border-color: black;
+    border-color: white;
     border-style: solid;
-    background-color: blue;
+    background-color: black;
     z-index: 1;
+    overflow-x:scroll;
+    scrollbar-width: none; 
 }
 .saturday{
     position: absolute;
@@ -451,8 +462,10 @@ body{
     width: 90%;
     height: 100%;
     border-radius: 3vw;
-    border-color: black;
+    border-color: white;
     border-style: solid;
-    background-color: blue;
+    background-color: black;
     z-index: 1;
+    overflow-x:scroll;
+    scrollbar-width: none; 
 }
