@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student - TimeTable</title>
+    <link rel="stylesheet" href="ttstyles.css">
+    <script src="ttscript.js" defer></script>
+</head>
+<body>
+    <div class="buttons">
+        <button id="add">Add</button>
+        <button id="remove">Remove</button>
+    </div>
+
+
+    <div class="addtask">
+        <input type="text" id="taskname" placeholder="Task Name" required>
+        <select id="taskday" required>
+            <option value="" disabled selected>Select Day</option>
+            <option value="sunday">Sunday</option>
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+            <option value="saturday">Saturday</option>
+        </select>
+        <input type="time" id="taskstart" placeholder="Task Starting Time" required> 
+        <input type="time" id="taskend" placeholder="Ending Time" required>
+        <button id="submit_task">Add Task</button>
+        <button id="cancel">Cancel</button> 
+    </div>
+
+
+    <div class="timetable">
+        <div class="sunday">
+            <div class="sundayname">Sun</div>
+            <div id="sundaytask"></div>
+        </div>
+        <div class="monday">
+            <div class="mondayname">Mon</div>
+            <div id="mondaytask"></div>
+        </div>
+        <div class="tuesday">
+            <div class="tuesdayname">Tues</div>
+            <div id="tuesdaytask"></div>
+        </div>
+        <div class="wednesday">
+            <div class="wednesdayname">Wed</div>
+            <div id="wednesdaytask"></div>
+        </div>
+        <div class="thursday">
+            <div class="thursdayname">Thurs</div>
+            <div id="thursdaytask"></div>
+        </div>
+        <div class="friday">
+            <div class="fridayname">Fri</div>
+            <div id="fridaytask"></div>
+        </div>
+        <div class="saturday">
+            <div class="saturdayname">Sat</div>
+            <div id="saturdaytask"></div>
+        </div>
+    </div>
+</body>
+</html>
